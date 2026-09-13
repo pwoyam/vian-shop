@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-mode="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ویان | قالب فروشگاه اینترنتی</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f7d74'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white'%3E%D9%88%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+<a class="skip" href="#view">پرش به محتوا</a>
+<div id="splash"><div class="s-logo">ویان</div></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-r"><a href="#/faq">سوالات متداول</a><a href="#/account?tab=orders">پیگیری سفارش</a></div>
+    <div style="display:flex;gap:18px;align-items:center">
+      <span id="tbSale" style="display:inline-flex;gap:7px;align-items:center;font-weight:800"></span>
+      <a href="tel:02191000000" id="tbPhone"></a>
+    </div>
+  </div>
+</div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hwrap">
+    <button class="ibtn" style="display:none" id="menuBtn" data-act="menu-open" aria-label="منو"></button>
+    <a class="logo" href="#/" aria-label="خانه">
+      <span class="mark" id="logoMark">و</span>
+      <span><span id="logoName">ویان</span><small id="logoTag"></small></span>
+    </a>
+    <nav class="nav" id="mainNav" aria-label="ناوبری اصلی"></nav>
+    <div class="hact">
+      <button class="ibtn" data-act="search-open" aria-label="جستجو" id="searchBtn"></button>
+      <a class="ibtn hide-m" href="#/account" aria-label="حساب کاربری" id="userBtn"></a>
+      <a class="ibtn hide-m" href="#/wishlist" aria-label="علاقه‌مندی‌ها" id="wishBtn"><span class="cnt" id="wishCnt"></span></a>
+      <button class="ibtn hide-m" onclick="location.hash='#/compare'" aria-label="مقایسه" id="cmpBtn"><span class="cnt" id="cmpCnt"></span></button>
+      <button class="ibtn" data-act="cart-open" aria-label="سبد خرید" id="cartBtn"><span class="cnt" id="cartCnt"></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="view" class="view-anim" aria-live="polite"></main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div>
+        <a class="logo" href="#/"><span class="mark" id="fLogoMark">و</span><span id="fLogoName">ویان</span></a>
+        <p class="ftr-about" id="fAbout"></p>
+        <div class="socials" id="fSocials"></div>
+      </div>
+      <div><h5>دسترسی سریع</h5><ul id="fQuick"></ul></div>
+      <div><h5>خدمات مشتریان</h5><ul id="fSrv"></ul></div>
+      <div>
+        <h5>در تماس باشیم</h5>
+        <ul class="ftr-c" id="fContact"></ul>
+        <form data-form="newsletter" style="display:flex;gap:8px;margin-top:6px">
+          <input class="inp" type="email" name="email" placeholder="ایمیل شما" aria-label="ایمیل برای خبرنامه" style="background:color-mix(in srgb,var(--bg) 10%,transparent);border-color:color-mix(in srgb,var(--bg) 22%,transparent);color:var(--bg)">
+          <button class="btn btn-p btn-sm" type="submit">عضویت</button>
+        </form>
+      </div>
+    </div>
+    <div class="ftr-bar"><span id="fCopy"></span><div class="pays" id="fPays"></div></div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="cartDrawer" role="dialog" aria-label="سبد خرید" aria-modal="true">
+  <div class="dw-head"><b id="cdTitle">سبد خرید</b><button class="ibtn" data-act="cart-close" aria-label="بستن"></button></div>
+  <div class="dw-body" id="cartBody"></div>
+  <div class="dw-foot" id="cartFoot"></div>
+</aside>
+<aside class="drawer from-r" id="menuDrawer" role="dialog" aria-label="منو" aria-modal="true">
+  <div class="dw-head"><b id="mmTitle">منو</b><button class="ibtn" data-act="menu-close" aria-label="بستن"></button></div>
+  <div class="dw-body" id="menuBody"></div>
+</aside>
+<aside class="drawer from-r" id="filterDrawer" role="dialog" aria-label="فیلترها" aria-modal="true">
+  <div class="dw-head"><b>فیلترها</b><button class="ibtn" data-act="filter-close" aria-label="بستن"></button></div>
+  <div class="dw-body" id="filterBody"></div>
+  <div class="dw-foot"><button class="btn btn-p" style="width:100%" data-act="filter-close">مشاهده نتایج</button></div>
+</aside>
+
+<div class="sov" id="sov" role="dialog" aria-label="جستجو" aria-modal="true">
+  <div class="wrap">
+    <div class="sov-bar">
+      <span id="sovIc"></span>
+      <input type="search" id="sovInput" placeholder="جستجوی محصول، دسته یا برند..." aria-label="جستجو">
+      <button class="ibtn" data-act="search-close" aria-label="بستن" id="sovClose"></button>
+    </div>
+    <div class="sug" id="sovSug"></div>
+  </div>
+</div>
+
+<div id="modalRoot"></div>
+<div class="toasts" id="toasts" aria-live="assertive"></div>
+
+<button class="tfab" data-act="theme-open" aria-label="شخصی‌سازی پوسته" id="tfab"></button>
+<div class="tpanel" id="tpanel" role="dialog" aria-label="پوسته">
+  <h6 id="tp1">رنگ سازمانی</h6><div class="sws" id="tSwatches"></div>
+  <h6 id="tp2">حالت نمایش</h6><div class="seg" id="tMode"></div>
+  <h6 id="tp3">گوشه‌ها</h6><div class="seg" id="tRadius"></div>
+  <h6 id="tp4">رنگ دلخواه برند</h6>
+  <div class="crow">
+    <input type="color" id="tCustom" value="#0f7d74" aria-label="انتخاب رنگ دلخواه">
+    <button class="btn btn-o btn-sm" data-act="theme-custom">اعمال رنگ</button>
+    <button class="btn btn-g btn-sm" data-act="theme-reset">بازنشانی</button>
+  </div>
+  <p class="note" id="tpNote"></p>
+</div>
+
+<div class="cmpbar" id="cmpbar">
+  <div class="thumbs" id="cmpThumbs"></div>
+  <button class="btn btn-p btn-sm" onclick="location.hash='#/compare'" id="cmpGo">مقایسه</button>
+  <button class="ibtn" style="color:var(--bg)" data-act="cmp-clear" aria-label="پاک‌کردن" id="cmpX"></button>
+</div>
+
+<script type="module" src="assets/js/app.js"></script>
+<noscript><div style="padding:40px;text-align:center;font-family:sans-serif">برای مشاهده این فروشگاه، جاوااسکریپت را فعال کنید.</div></noscript>
+</body>
+</html>

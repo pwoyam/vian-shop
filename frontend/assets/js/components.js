@@ -1,6 +1,6 @@
 import { I, IF } from './icons.js';
 import { art } from './art.js';
-import { esc, fa, faD, toman, pctOff } from './utils.js';
+import { $, $$, esc, fa, faD, toman, pctOff } from './utils.js';
 import { state, cartCount, cartTotal } from './store.js';
 import { CONFIG } from './config.js';
 

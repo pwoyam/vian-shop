@@ -17,7 +17,7 @@ export function checkoutView(params) {
 
 function renderCheckout() {
   const t = cartTotal();
-  const stepsH = '<div class="steps">' + [['۱', 'اطلاعات ارسال'], ['۲', 'روش پرداخت'], ['۳', 'بازبینی و ثبت']].map((s, i) => '<div class="stp ' + (CO.step === i + 1 ? 'on' : '') + ' ' + (CO.step > i + 1 ? 'done' : '') + '"><i>' + (CO.step > i + 1 ? I('check', 15) : s[0]) + '</i><span>' + s[1] + '</span></div>' + (i < 2 ? '<div class="stp-line ' + (CO.step > i + 1 ? 'done' : '') + '"></div>' : ''); }).join('') + '</div>';
+  const stepsH = '<div class="steps">' + [['۱', 'اطلاعات ارسال'], ['۲', 'روش پرداخت'], ['۳', 'بازبینی و ثبت']].map((s, i) => '<div class="stp ' + (CO.step === i + 1 ? 'on' : '') + ' ' + (CO.step > i + 1 ? 'done' : '') + '"><i>' + (CO.step > i + 1 ? I('check', 15) : s[0]) + '</i><span>' + s[1] + '</span></div>' + (i < 2 ? '<div class="stp-line ' + (CO.step > i + 1 ? 'done' : '') + '"></div>' : '')).join('') + '</div>';
   let body = '';
   if (CO.step === 1) {
     const u = state.user || {}, last = state.addrs[0] || {};
@@ -49,7 +49,6 @@ function renderCheckout() {
 }
 function escAttr(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 
-// کمک‌کننده‌ها برای app.js
 window.__coBack = () => { CO.step--; renderCheckout(); };
 window.__coNext = (kind, fd) => {
   if (kind === 'co1') { CO.info = { name: fd.get('name'), phone: fd.get('phone'), city: fd.get('city'), postal: fd.get('postal'), addr: fd.get('addr') }; CO.step = 2; renderCheckout(); }
